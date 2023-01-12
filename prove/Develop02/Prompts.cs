@@ -21,7 +21,7 @@ class Prompts
         int number = rand.Next(0, (1-(promptsList.Count)));
 
         //Writes a random element from promptsList
-        Console.WriteLine(promptsList[number]);
+        Console.WriteLine($"{promptsList[number]}\n >");
     }
 
 }
