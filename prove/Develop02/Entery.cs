@@ -1,18 +1,24 @@
 
 public class Entery
 {
-    public void Text()
+
+    public Entery()
+    {
+    }
+    
+    public string Text()
     {
         Prompts prompts = new Prompts();
         prompts.Prompt();
 
         string entery;
         entery = Console.ReadLine();
+
+        return entery;
     }
 
-    public void Save()
+    private void Save()
     {
-        File.WriteAllLinesAsync(save, text);
-
+        
     }
 }

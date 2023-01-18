@@ -39,7 +39,7 @@ class Program
             }
             else if (selection == 4)
             {
-                Save(entery.Text());
+                Save(Entery);
             }
             else if (selection == 5)
             {
