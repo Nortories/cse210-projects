@@ -1,5 +1,6 @@
 class Display
 {
+    //Displays main Menu and returns int userinput.
     public int Menu()
         {
             Console.WriteLine("Please selcet one of the following choices");
@@ -13,6 +14,7 @@ class Display
             return Menu;
         }
 
+    //Checks if file was loaded then writes file to console.
     public void DisplayJournal()
         {
             List<string> list = new List<string>();

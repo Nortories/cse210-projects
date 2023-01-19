@@ -6,9 +6,10 @@ public class Entery
     public string _datetime;
     public string _entery;
 
+    //Stores most recent entery to static string
     public static string newEntery;
 
-
+    //Randomly gets and writes one of the elements from the prompts list.
     public void Prompt()
     {
         Random rand = new Random();
@@ -33,6 +34,7 @@ public class Entery
         Console.WriteLine($"{promptsList[number]}");
     }
     
+    //Gets userinput for title and journal entery then stores the entery in static var newEntery.
      public void Write()
     {
         System.Console.Write("Entery Title >  ");
