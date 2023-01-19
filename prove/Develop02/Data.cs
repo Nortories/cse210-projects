@@ -5,7 +5,7 @@ public class Data
     {
         StreamReader read = null;
 
-        System.Console.Write("What is the name of the file you would like to load");
+        System.Console.Write("What is the name of the file you would like to load\n >    ");
         string fileName = Console.ReadLine();
 
         if (File.Exists(fileName))
@@ -50,8 +50,11 @@ public class Data
             write.Close();
             System.Console.WriteLine($"\nCreated new file {fileName}");
         }
-        File.AppendAllText(fileName, text);
-        System.Console.WriteLine($"\nSaved new entery too {fileName}");
-
+        else
+        {
+            File.AppendAllText(fileName, text);
+            System.Console.WriteLine($"\nSaved new entery too {fileName}");
+        }
+        
     }
 }

@@ -17,10 +17,17 @@ class Display
         {
             List<string> list = new List<string>();
             list = Data._loads;
-            foreach (var entery in list)
-                {
-                    System.Console.WriteLine(entery);
-                }
+            if(list != null)
+            {
+                foreach (var entery in list)
+                    {
+                        System.Console.WriteLine(entery);
+                    }
+            }
+            else
+            {
+                System.Console.WriteLine($"\n No data has been loaded this session\n First load file you would like to display.");
+            }
         }
         
 }
