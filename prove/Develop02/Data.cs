@@ -1,10 +1,11 @@
 public class Data
 {
+    public static List<string> _loads;
     public void Load()
     {
         StreamReader read = null;
 
-        System.Console.WriteLine("What is the name of the file you would like to load");
+        System.Console.Write("What is the name of the file you would like to load");
         string fileName = Console.ReadLine();
 
         if (File.Exists(fileName))
@@ -19,11 +20,11 @@ public class Data
                 {
                     list.Add(entery);
                 }
-                foreach (var entery in list)
-                {
-                    System.Console.WriteLine(entery);
-                }
             }
+            read.Close();
+            _loads = list;
+            System.Console.WriteLine($"\n File {fileName} loaded");
+
         }
         else if (!File.Exists(fileName))
         {
@@ -31,21 +32,26 @@ public class Data
         }
     }
 
-    public void Save(string title, string datetime, string entery)
+    public void Save()
     {
+        Entery enerty = new Entery();
+        string text = Entery.newEntery;
+
         StreamWriter write = null;
-        string text = ($"\n{title}\n{datetime}\n{entery}\n,");
 
 
-        System.Console.WriteLine("Where would you like to save your entery? /n > ");
+        System.Console.Write("Where would you like to save your entery? \n > ");
         //Where to save the file
         string fileName = Console.ReadLine();
-        if (File.Exists(fileName))
+        if (!File.Exists(fileName))
         {
             write = new StreamWriter(File.OpenWrite(fileName));
             write.WriteLine(text);
+            write.Close();
+            System.Console.WriteLine($"\nCreated new file {fileName}");
         }
-        write = new StreamWriter(File.OpenWrite(fileName));
-        write.WriteLine(text);
+        File.AppendAllText(fileName, text);
+        System.Console.WriteLine($"\nSaved new entery too {fileName}");
+
     }
 }

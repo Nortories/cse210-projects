@@ -4,7 +4,9 @@ public class Entery
 
     public string _title;
     public string _datetime;
-    public string _entery; 
+    public string _entery;
+
+    public static string newEntery;
 
 
     public void Prompt()
@@ -14,7 +16,6 @@ public class Entery
         // Add/Remove prompts
         string[] prompts = 
         {
-        "",
         "What did you eat for breakfast? ",
         "How was the weather today? ",
         "What is something new you learned? ",
@@ -29,16 +30,17 @@ public class Entery
         var number = rand.Next(0, (promptsList.Count));
 
         //Writes a random element from promptsList
-        Console.WriteLine($"{promptsList[number]}\n >");
+        Console.WriteLine($"{promptsList[number]}");
     }
     
      public void Write()
     {
-        System.Console.WriteLine("Entery Title >  ");
+        System.Console.Write("Entery Title >  ");
         _title = Console.ReadLine();
-        System.Console.WriteLine("Entery >  ");
+        System.Console.Write("Entery >  ");
         _entery = Console.ReadLine();
         _datetime = datetime.ToString();
+        newEntery = ($"\n{_title}\n{_datetime}\n{_entery}\n,");   
     }
 
 }

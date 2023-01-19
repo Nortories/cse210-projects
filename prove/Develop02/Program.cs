@@ -2,6 +2,8 @@ using System;
 
 class Program
 {
+
+    
     static void Main(string[] args)
     {
       Start();
@@ -10,15 +12,15 @@ class Program
     static void Start()
     {
         Display display = new Display();
-        Entery entery = new Entery();
-
 
         int menuSelection = display.Menu();
         
             if (menuSelection == 1)
             {
+                Entery entery = new Entery();
                 entery.Prompt();
                 entery.Write();
+        
             }
             else if (menuSelection == 2)
             {
@@ -31,8 +33,10 @@ class Program
             }
             else if (menuSelection == 4)
             {
+                {
                 Data data = new Data();
-                data.Save(entery._title, entery._datetime, entery._entery);
+                data.Save();
+                }
             }
             else if (menuSelection == 5)
             {
@@ -41,7 +45,7 @@ class Program
             else
             {
                 System.Console.WriteLine("\n\nThat was not a valied input");
-                Start();
             }
+        Start();
     }
 }

@@ -7,7 +7,7 @@ class Display
             Console.WriteLine("2. Display");
             Console.WriteLine("3. Load");
             Console.WriteLine("4. Save");
-            Console.WriteLine("5. Quit \n >");
+            Console.Write("5. Quit \n >    ");
             int selection = Convert.ToInt32(Console.ReadLine());
             int Menu = selection;
             return Menu;
@@ -15,7 +15,12 @@ class Display
 
     public void DisplayJournal()
         {
-            
+            List<string> list = new List<string>();
+            list = Data._loads;
+            foreach (var entery in list)
+                {
+                    System.Console.WriteLine(entery);
+                }
         }
         
 }
