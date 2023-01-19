@@ -8,7 +8,7 @@ class Display
             Console.WriteLine("2. Display");
             Console.WriteLine("3. Load");
             Console.WriteLine("4. Save");
-            Console.Write("5. Quit \n >    ");
+            Console.Write("5. Quit \n > ");
             int selection = Convert.ToInt32(Console.ReadLine());
             int Menu = selection;
             return Menu;
@@ -28,7 +28,7 @@ class Display
             }
             else
             {
-                System.Console.WriteLine($"\n No data has been loaded this session\n First load file you would like to display.");
+                System.Console.WriteLine($"\n No data has been loaded this session\n First load file you would like to display\n");
             }
         }
         

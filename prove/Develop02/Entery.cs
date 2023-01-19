@@ -31,18 +31,20 @@ public class Entery
         var number = rand.Next(0, (promptsList.Count));
 
         //Writes a random element from promptsList
-        Console.WriteLine($"{promptsList[number]}");
+        newEntery = promptsList[number];
+        Console.WriteLine($"{newEntery} ");
     }
     
     //Gets userinput for title and journal entery then stores the entery in static var newEntery.
      public void Write()
     {
-        System.Console.Write("Entery Title >  ");
+        System.Console.Write("Entery Title > ");
         _title = Console.ReadLine();
-        System.Console.Write("Entery >  ");
+        System.Console.Write("Entery > ");
         _entery = Console.ReadLine();
         _datetime = datetime.ToString();
-        newEntery = ($"\n{_title}\n{_datetime}\n{_entery}\n,");   
+        newEntery = newEntery + ($"\n{_title}\n{_datetime}\n{_entery}\n,");   
+        System.Console.WriteLine("Thank you for your Journal entery\n");
     }
 
 }

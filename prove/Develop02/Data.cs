@@ -10,7 +10,7 @@ public class Data
         StreamReader read = null;
 
         //Gets fileName from user.
-        System.Console.Write("What is the name of the file you would like to load\n >    ");
+        System.Console.Write("\nWhat is the name of the file you would like to load\n > ");
         string fileName = Console.ReadLine();
 
         //Check if File Exists in CD.
@@ -31,9 +31,10 @@ public class Data
             //closes file and stores list to static var.
             read.Close();
             _loads = list;
-            System.Console.WriteLine($"\n File {fileName} loaded");
+            System.Console.WriteLine($"File {fileName} loaded\n");
 
         }
+        //erron handler if file entered does not exist
         else if (!File.Exists(fileName))
         {
             System.Console.WriteLine($"\n No such file \n");
@@ -49,7 +50,7 @@ public class Data
         StreamWriter write = null;
 
 
-        System.Console.Write("Where would you like to save your entery? \n > ");
+        System.Console.Write("\nWhere would you like to save your entery? \n > ");
         //Where to save the file
         string fileName = Console.ReadLine();
 
@@ -60,12 +61,12 @@ public class Data
             write = new StreamWriter(File.OpenWrite(fileName));
             write.WriteLine(text);
             write.Close();
-            System.Console.WriteLine($"\nCreated new file {fileName}");
+            System.Console.WriteLine($"Created new file {fileName}\n");
         }
         else
         {
             File.AppendAllText(fileName, text);
-            System.Console.WriteLine($"\nSaved new entery too {fileName}");
+            System.Console.WriteLine($"Saved new entery too {fileName}\n");
         }
         
     }
