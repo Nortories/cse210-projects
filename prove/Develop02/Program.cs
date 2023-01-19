@@ -2,53 +2,46 @@ using System;
 
 class Program
 {
-    Display display = new Display();
-    void Main(string[] args)
+    static void Main(string[] args)
     {
-      Menu();
+      Start();
     }
 
-    void Menu()
+    static void Start()
     {
+        Display display = new Display();
+        Entery entery = new Entery();
 
-        int selection = display.Menu();
+
+        int menuSelection = display.Menu();
         
-            if (selection == 1)
+            if (menuSelection == 1)
             {
-                Entery entery = new Entery();
                 entery.Prompt();
                 entery.Write();
             }
-            else if (selection == 2)
+            else if (menuSelection == 2)
             {
                 display.DisplayJournal();
             }
-            else if (selection == 3)
+            else if (menuSelection == 3)
             {
                 Data data = new Data();
                 data.Load();
             }
-            else if (selection == 4)
+            else if (menuSelection == 4)
             {
                 Data data = new Data();
-                data.Save();
+                data.Save(entery._title, entery._datetime, entery._entery);
             }
-            else if (selection == 5)
+            else if (menuSelection == 5)
             {
-                Quit();
+                Environment.Exit(0);
             }
             else
             {
                 System.Console.WriteLine("\n\nThat was not a valied input");
-                Menu();
+                Start();
             }
-    }
-    static void Display()
-    {
-        System.Console.WriteLine("display");
-    }
-    static void Quit()
-    {
-        System.Console.WriteLine("quit");
     }
 }
