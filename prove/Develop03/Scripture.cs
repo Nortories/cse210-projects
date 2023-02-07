@@ -25,7 +25,7 @@ public class Scripture
     {
         int maxRan = _verses.Count();
         Random rnd = new Random();
-       int rndVerse = rnd.Next(0,maxRan);
+        int rndVerse = rnd.Next(0,maxRan);
         _verses[rndVerse].Hide();
     }
 }
