@@ -25,11 +25,24 @@ public class Word
 
     public bool Hide()
     {
-        if (_isHidden == false)
+        if(_isHidden == false)
         {
             _isHidden = true;
             return false;
         }
-        return true;
+        else
+        {
+            return true;
+        }
+    }
+
+    public bool GetIfHidden()
+    {
+        if (_isHidden == true)
+            return true;
+        else
+        {
+            return false;
+        }
     }
 }

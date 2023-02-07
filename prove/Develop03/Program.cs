@@ -23,12 +23,11 @@ class Program
     {
         System.Console.Write($"Type enter to hide words, or quit to exit.\n>    ");
         string prompt = (Console.ReadLine()).ToLower();
-        System.Console.WriteLine($"How many words do you want to hind?");
-        int numToHide = Int32.Parse(Console.ReadLine());
+        Random rnd = new Random();
+        int numToHide = rnd.Next(1,3);
         if (prompt != "quit")
         {
             HideSomeStuff(numToHide);    
-            s.DisplayCurrent();
         }
         else
         {
@@ -38,9 +37,23 @@ class Program
 
     private void HideSomeStuff(int numToHide)
     {
-        foreach (var i in Enumerable.Range(0, numToHide))
+        bool isHidden = s.GetIfHidden();
+        if (isHidden == true)
         {
-            s.Hide();
+            System.Console.Clear();
+            s.DisplayCurrent();
+            System.Console.WriteLine("Everything is hidden now");
+            Environment.Exit(0);
+        }
+        else
+        {
+            foreach (var i in Enumerable.Range(0, numToHide))
+            {
+                s.Hide();
+            }
+            System.Console.Clear();
+            s.DisplayCurrent();
+            PromtUser();
         }
     }
 }
