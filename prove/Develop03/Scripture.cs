@@ -1,40 +1,31 @@
 public class Scripture
 {
-    private string _referance;
-    private List<string> _verses;
+    //Attribute
+    private List<Verse> _verses = new List<Verse>();
 
-    public Scripture()
-    {}
-    public Scripture(string referance, List<string> verse)
+    //Constructor
+    public Scripture(List<string> verses)
     {
-        _referance = referance;
-        _verses = verse;
-    }
-    
-    public bool AreHidden()
-    {
-        bool allAreHidden = false; //placeholder
-        if(allAreHidden != true)
+        foreach (string verse in verses)
         {
-            return false;
+            Verse vObject = new Verse(verse);
+            _verses.Add(vObject);
         }
-        else
+    }
+    public void DisplayCurrent()
+    {
+        foreach (Verse v in _verses)
         {
-            return true;
+            v.DisplayCurrent();
+            System.Console.WriteLine();
         }
     }
 
-    public void HideWords()
+    public void Hide()
     {
-        {
-        Random rn = new Random();
-        int numOfVerses = _verses.Count();
-        int ranVerse = rn.Next(0,numOfVerses);
-
-        Verse v = new Verse(_verses[ranVerse]);
-        v.HideWord();
-        }
+        int maxRan = _verses.Count();
+        Random rnd = new Random();
+       int rndVerse = rnd.Next(0,maxRan);
+        _verses[rndVerse].Hide();
     }
-
-
 }

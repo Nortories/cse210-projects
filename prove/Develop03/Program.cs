@@ -2,52 +2,45 @@ using System;
 
 class Program
 {
+     static List<string> verses = new List<string>
+        {
+            "And it cam to pass",
+            "Jesus Wept",
+            "And there was anothe verse"
+        };
+        Scripture s = new Scripture(verses);
+
     static void Main(string[] args)
     {
-     
-    string scripture = ("I, Nephi, having been aborn |of goodly parents");
-    string referance = ("1Nephi: 1:1");
+        Program p = new Program();
+        foreach (string verse in verses)
+            System.Console.WriteLine(verse);
+        p.PromtUser();
 
-    DisplayScripture();
-
-    void DisplayScripture()
-    {
-        System.Console.WriteLine($"{referance}    {scripture}");
-        System.Console.WriteLine("Enter to hide words, or Type Quit to Exit");
-         string userInput = (Console.ReadLine()).ToLower();
-         if(userInput != "quit" )
-         {
-            HideWords();
-         }
-         else
-         {
-            Environment.Exit(0);
-         }
     }
 
-    void HideWords()
+    private void PromtUser()
     {
-        List<string> verseList = new List<string>();
-        string[] verses = scripture.Split('|');
-        foreach(var verse in verses)
+        System.Console.Write($"Type enter to hide words, or quit to exit.\n>    ");
+        string prompt = (Console.ReadLine()).ToLower();
+        System.Console.WriteLine($"How many words do you want to hind?");
+        int numToHide = Int32.Parse(Console.ReadLine());
+        if (prompt != "quit")
         {
-            System.Console.WriteLine(verse);
-            verseList.Add(verse);
+            HideSomeStuff(numToHide);    
+            s.DisplayCurrent();
         }
-
-        Scripture s = new Scripture(referance, verseList);
-
-        System.Console.WriteLine("How many words would you like to hide");
-        int wordsToHide = Convert.ToInt16(System.Console.ReadLine());
-        //check if all words are hidden
-        bool allAreHidden = s.AreHidden();
-        if (allAreHidden == true)
-            Environment.Exit(0);
         else
         {
-            for (int i = 0; i < wordsToHide; i++ )
-            s.HideWords();
+            Environment.Exit(0);
         }
     }
+
+    private void HideSomeStuff(int numToHide)
+    {
+        foreach (var i in Enumerable.Range(0, numToHide))
+        {
+            s.Hide();
+        }
     }
 }

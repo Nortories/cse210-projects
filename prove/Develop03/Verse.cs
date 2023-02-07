@@ -1,27 +1,38 @@
+
 public class Verse
-{
-    List<string> _words = new List<string>();
-    public Verse()
-    {}
+{   
+    //Attributes
+    //list of word objects
+    private List<Word> _words = new List<Word>();
+    private bool _isHidden;
+
+    //contructor
     public Verse(string verse)
     {
-        string[] words = verse.Split(' ');
-        foreach(var word in words)
+        char[] delimiterChars = { ' ', '.', ':', '\t'};
+        string[] words = verse.Split(delimiterChars);
+        foreach (string wordtext in words)
         {
-            _words.Add(word);
+            Word w = new Word(wordtext);
+            _words.Add(w);
         }
     }
-    public void HideWord()
-    {
-        Random rn = new Random();
-        int numOfWords = _words.Count();
-        int ranWord = rn.Next(0, numOfWords);
 
-        bool hideAWord = false;
-        while (hideAWord != true)
+    //Display Function
+    public void DisplayCurrent()
+    {
+        foreach (Word w in _words)
         {
-            Word w = new Word(_words[ranWord]);
-            hideAWord = w.HideWord();
+            w.DisplayCurrent();
+            System.Console.Write(" ");
         }
+    }
+
+    public void Hide()
+    {
+        int maxRan = _words.Count();
+        Random rnd = new Random();
+        int rndWord = rnd.Next(0,maxRan);
+        _words[rndWord].Hide();
     }
 }

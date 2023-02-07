@@ -5,25 +5,26 @@ public class Word
 
     public Word()
     {}
-    public Word(string word)
+    public Word(string wordtext, bool isHidden = false)
     {
-        _wordText = word;
+        _isHidden = isHidden;
+        _wordText = wordtext;
     }
 
-    public bool HideWord()
+    public void DisplayCurrent()
     {
+        int manyBlanks = _wordText.Count();
+
         if (_isHidden != true)
-        {
-            for (int i = 0; i < (_wordText.Count()); i++)
-            {
+            System.Console.Write($"{_wordText}");
+        else if (_isHidden == true)
+            foreach (char blanks in _wordText)
             System.Console.Write("_");
-            }
-            _isHidden = true;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+
+    }
+
+    public void Hide()
+    {
+        _isHidden = true;
     }
 }
