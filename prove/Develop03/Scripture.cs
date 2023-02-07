@@ -1,5 +1,7 @@
 public class Scripture
 {
+    bool veresHidden = false;
+
     //Attribute
     private List<Verse> _verses = new List<Verse>();
     private bool _isHidden;
@@ -28,6 +30,16 @@ public class Scripture
         Random rnd = new Random();
         int rndVerse = rnd.Next(0,maxRan);
         _verses[rndVerse].Hide();
+        if (veresHidden == true)
+            foreach (Verse v in _verses)
+            {
+                veresHidden = v.GetIfHidden();
+                if (veresHidden == false)
+                {
+                    Hide();
+                    break;
+                }                
+            }
     }
     public bool GetIfHidden()
     {

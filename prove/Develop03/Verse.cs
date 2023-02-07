@@ -44,7 +44,10 @@ public class Verse
             {
                 wordHidden = word.GetIfHidden();
                 if (wordHidden == false)
-                Hide();                
+                {
+                    Hide();
+                    break;
+                }                
             }
     }
     public bool GetIfHidden()
