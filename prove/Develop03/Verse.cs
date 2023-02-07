@@ -1,6 +1,8 @@
 
 public class Verse
 {   
+    bool wordHidden = false;
+
     //Attributes
     //list of word objects
     private List<Word> _words = new List<Word>();
@@ -28,11 +30,20 @@ public class Verse
         }
     }
 
-    public void Hide()
+    public bool Hide()
     {
         int maxRan = _words.Count();
         Random rnd = new Random();
         int rndWord = rnd.Next(0,maxRan);
-        _words[rndWord].Hide();
+        wordHidden = _words[rndWord].Hide();
+
+        if (wordHidden == false)
+            foreach (Word word in _words)
+            {
+                wordHidden = word.Hide();
+                if (wordHidden == true)
+                Hide();                
+            }
+            return false;
     }
 }

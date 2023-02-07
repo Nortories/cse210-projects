@@ -23,8 +23,13 @@ public class Word
 
     }
 
-    public void Hide()
+    public bool Hide()
     {
-        _isHidden = true;
+        if (_isHidden == false)
+        {
+            _isHidden = true;
+            return false;
+        }
+        return true;
     }
 }
