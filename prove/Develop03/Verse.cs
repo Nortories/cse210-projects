@@ -3,13 +3,9 @@ public class Verse
 {   
     //globale var
     bool wordHidden = false;
-    
-
-    //Attributes
-    //list of word objects
+    //Attributes 
     private List<Word> _words = new List<Word>();
     private bool _isHidden;
-
     //contructor
     public Verse(string verse)
     {
@@ -21,7 +17,6 @@ public class Verse
             _words.Add(w);
         }
     }
-
     //Display Function
     public void DisplayCurrent()
     {

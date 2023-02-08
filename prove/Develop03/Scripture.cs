@@ -1,8 +1,8 @@
 public class Scripture
 {
-    bool veresHidden = false;
+    private bool veresHidden = false;
 
-    //Attribute
+    //Attributes 
     private List<Verse> _verses = new List<Verse>();
     private bool _isHidden;
 
