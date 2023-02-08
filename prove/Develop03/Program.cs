@@ -2,12 +2,12 @@ using System;
 
 class Program
 {
-    static List<string> reference = new List<string>{"Proverbs 3:5-6", "Deuteronomy 7:3-4", "Nephi 3:7"};
-    static List<string> verses = new List<string>{};
-    List<Scripture> scrp = new List<Scripture>();
-    int _x = 0;
+    private static List<string> reference = new List<string>{"Proverbs 3:5-6", "Deuteronomy 7:3-4", "Nephi 3:7"};
+    private static List<string> verses = new List<string>{};
+    private List<Scripture> scrp = new List<Scripture>();
+    private int _x = 0;
 
-    Random rand = new Random();
+    private Random rand = new Random();
     
     static void Main(string[] args)
     {
