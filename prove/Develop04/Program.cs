@@ -9,9 +9,12 @@ class Program
 
     public static void SelectAct()
     {
+        System.Console.Clear();
         Display display = new Display();
         display.DisplayMenu();
-        int input = Convert.ToInt16(Console.ReadLine());
+        string userInput = Console.ReadLine();
+        try{
+        int input = Convert.ToInt16(userInput);
         if (input == 1)
         {
             BreathingAct breath = new BreathingAct(display.DurationInput());
@@ -27,6 +30,18 @@ class Program
             ListingAct listAct = new ListingAct(display.DurationInput());
             listAct.List();
         }
-
+        else if (input == 4)
+        {
+            Environment.Exit(0);
+        }
+        }
+        catch
+        {
+            System.Console.WriteLine("Not a valid input please try again");
+            Activity a = new Activity();
+            a.Spinner(3);
+            System.Console.Clear();
+            SelectAct();
+        }
     }
 }

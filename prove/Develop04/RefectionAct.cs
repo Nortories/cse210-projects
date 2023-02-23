@@ -41,7 +41,7 @@ class RefectionAct : Activity
         System.Console.Clear();
         base.OpenActivity();
         System.Console.WriteLine($"\n{RandPromt()}");
-        base.pause(7);
+        base.pause(8);
         System.Console.Clear();
 
         double addSeconds = _duration;
@@ -52,11 +52,12 @@ class RefectionAct : Activity
         while (currentTime < futureTime)
         {    
             System.Console.WriteLine(RandQu());
-            base.Spinner(6);
+            base.Spinner(7);
             System.Console.Clear();
             currentTime = DateTime.Now;
         }
         base.EndActivity();
+        base.Spinner(6);
         System.Console.Clear();
         Program.SelectAct();
         {
