@@ -96,7 +96,7 @@ class Program
     {
         foreach (Goal g in goals)
         {
-            switch(TypeDescriptor.GetClassName(g))
+            switch(TypeDescriptor.GetClassName(g)) //Gets object type
             {
                 case "SimpleGoal":
                     string simpString = g.DisplayGoal();
@@ -139,26 +139,54 @@ class Program
             string[] parts = line.Split("|");
             string type = parts[0];
 
+            string isComplete;
+            string name;
+            string discription;
+            int value;
+            int currentCount;
+            int goalCount;
+            int bonusPoint;
+
             switch(type)
             {
-                //this is for simpleGoals only
+                //If loading SimpleGoals
                 case "SimpleGoal ":
-                    string isComplete = parts[1];
-                    string name = parts[2];
-                    string discription = parts[3];
-                    int value = Convert.ToInt32(parts[4]);
+                    isComplete = parts[1]; //Skips parts[0] string object type
+                    name = parts[2];
+                    discription = parts[3];
+                    value = Convert.ToInt32(parts[4]);
                     SimpleGoal simpleGoal = new SimpleGoal(name, discription, value);
                     if (isComplete == ("[X] "))
                     simpleGoal.SetTrue();
                     goals.Add(simpleGoal);
                     break;
 
-                case "EternalGoal":
+                case "EternalGoal ":
                     //load eternal goal from txt
+                    isComplete = parts[1]; //Skips parts[0] string object type
+                    name = parts[2];
+                    discription = parts[3];
+                    value = Convert.ToInt32(parts[4]);
+                    currentCount = Convert.ToInt32(parts[5]); //loads currentCount
+                    EternalGoal eternalGoal = new EternalGoal(name, discription, value, currentCount);
+                    if (isComplete == ("[X] "))
+                    eternalGoal.SetTrue();
+                    goals.Add(eternalGoal);
                     break;
 
-                case "ChecklistGoal":
+                case "ChecklistGoal ":
                     //load ChecklistGoal from txt
+                    isComplete = parts[1]; //Skips parts[0] string object type
+                    name = parts[2];
+                    discription = parts[3];
+                    value = Convert.ToInt32(parts[4]);
+                    currentCount = Convert.ToInt32(parts[5]); //loading currentCount
+                    goalCount = Convert.ToInt32(parts[6]); //loading goalCount
+                    bonusPoint = Convert.ToInt32(parts[7]);// loading bonusPoint
+                    ChecklistGoal checklistGoal = new ChecklistGoal(name, discription, value, currentCount, goalCount, bonusPoint);
+                    if (isComplete == ("[X] "))
+                    checklistGoal.SetTrue();
+                    goals.Add(checklistGoal);
                     break;
             }
         }

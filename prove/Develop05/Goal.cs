@@ -21,9 +21,11 @@ abstract class Goal
             {_complete = ("[X]");}
 
         if (save == true)
-            {goalString = ($"{_complete} | {_name} | {_discription} | {_value}");}
-        
-        goalString = ($"{_complete} | Name:{_name} | Discription:{_discription} | Value:{_value}");       
+            {goalString = ($"{_complete} | {_name} | {_discription} | {_value}");
+            return goalString;}
+
+        goalString = ($"{_complete} | Name:{_name} | Discription:{_discription} | Value:{_value}");
+        save = false;       
         return goalString;
     }
 

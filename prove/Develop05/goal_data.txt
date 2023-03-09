@@ -1,4 +1,4 @@
-SimpleGoal |[X] | Name: asvbad | Discription: 324 | Value:1
-SimpleGoal |[X] | Name: awgbfa | Discription: abtan | Value:1221
-EternalGoal |[ ] | Name: Eternal GoalTest | Discription: ETest | Value: 200 | Completed:0
-ChecklistGoal |[X] | Name:checklistGoal | Discription:CheckMate | Value:300 | -----Completed:(3/3)
+SimpleGoal |[ ] |  simple goal  |  simp dis  | 100
+SimpleGoal |[X] |  another simple goal  |  another simple disc  | 150
+EternalGoal |[ ] |  eternal goal  |  Ediscp  | 200 | 0
+ChecklistGoal |[ ] |  check list  |  checklist dis  | 300 | 2 | 3 | 1000
