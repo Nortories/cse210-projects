@@ -6,16 +6,18 @@ class EternalGoal : Goal
     {
     }
 
-    public override string DisplayGoal()
+    public override string DisplayGoal(bool save = false)
     {
-        string goalString = ($"{_complete} | {_name} | {_discription} | {_value} | {_currentCount}");
+        string goalString;
+
+        if (save == true)
+            {goalString = ($"{_complete} | {_name} | {_discription} | {_value} | {_currentCount}");}
+
+        goalString = ($"{_complete} | Name: {_name} | Discription: {_discription} | Value: {_value} | Has done: {_currentCount} time(s)");
+
         return goalString;
     }
 
-    public override string GetCount()
-    {
-        return Convert.ToString(_currentCount);
-    }
     public override void SetTrue()
     {
         _currentCount++;

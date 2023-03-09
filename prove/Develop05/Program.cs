@@ -82,13 +82,18 @@ class Program
                     break;
                 case "3":
                 //Check list goal
+                    System.Console.WriteLine("How many times do you need to do this, to accomplish the goal for bonus points? >    ");
+                    int goalCount = Convert.ToInt32(System.Console.ReadLine());
+                    System.Console.WriteLine("Set bonus points when you've completed the entire goal >    ");
+                    int bonusPoint = Convert.ToInt32(System.Console.ReadLine());
+                    ChecklistGoal checklistGoal = new ChecklistGoal(name, discription, value, goalCount, bonusPoint);
+                    goals.Add(checklistGoal);
                     break;                   
             }
     }
 
     static void ListGoal(List<Goal> goals)
     {
-        System.Console.WriteLine("Checked | Name | Discreption | Points | Did | Goal");
         foreach (Goal g in goals)
         {
             switch(TypeDescriptor.GetClassName(g))
@@ -99,7 +104,11 @@ class Program
                     break;
                 case "EternalGoal":
                     string EternalString = g.DisplayGoal();
-                    System.Console.WriteLine($"{EternalString} | {g.GetCount()}");
+                    System.Console.WriteLine($"{EternalString}");
+                    break;
+                case "ChecklistGoal":
+                    string checklistGoal = g.DisplayGoal();
+                    System.Console.WriteLine($"{checklistGoal}");
                     break;
             }
         }
@@ -113,7 +122,7 @@ class Program
         {
             foreach (Goal g in goals)
             {
-                string goalString = g.DisplayGoal();
+                string goalString = g.DisplayGoal(true);
                 outputFile.WriteLine($"{g} |{goalString}");
             }
         }
