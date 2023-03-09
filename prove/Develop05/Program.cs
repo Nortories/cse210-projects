@@ -11,7 +11,7 @@ class Program
         bool runProgram = true;
         while(runProgram)
         {
-            System.Console.WriteLine($"\nYou have {DisplayPoints(goals)} points \n");
+            System.Console.WriteLine($"\nYou have {DisplayPoints(goals)} points");
             DisplayMenu();
             string choice = System.Console.ReadLine(); //Logic
                 switch (choice)
@@ -32,6 +32,9 @@ class Program
                         RecordEvent(goals);
                         break;
                     case "6":
+                        DeleteGoal(goals);
+                        break;
+                    case "7":
                         System.Environment.Exit(0);
                         break;
                     default:
@@ -41,32 +44,49 @@ class Program
         }
     }
 
+    static void DeleteGoal(List<Goal> goals)
+    {
+        System.Console.WriteLine();//Just gives spacing
+        int counter = 1;
+        foreach (Goal g in goals)
+        {
+            string goalString = g.DisplayGoal();
+            System.Console.WriteLine($"{counter}. {goalString}");
+            counter++;
+        }
+        System.Console.WriteLine("\nWitch Goal do you want to DELETE? >    ");
+        int choice = Convert.ToInt16(System.Console.ReadLine());
+
+        goals.RemoveAt(choice-1); //remove object in goal list at user choice
+    }
+
     static void DisplayMenu() //Menu
     {
-        System.Console.WriteLine("1. Create New Goal");
+        System.Console.WriteLine("\n1. Create New Goal");
         System.Console.WriteLine("2. List Goals");
         System.Console.WriteLine("3. Save Goals");
         System.Console.WriteLine("4. Load Goals");
         System.Console.WriteLine("5. Record Event");
-        System.Console.WriteLine("6. Quit");
+        System.Console.WriteLine("6. Delete Goal");
+        System.Console.WriteLine("7. Quit");
         System.Console.WriteLine("Select a choice from the menu >    ");
     }
 
     static void CreateGoal(List<Goal> goals)
     {
-        System.Console.WriteLine("1. Simple Goal");
+        System.Console.WriteLine("\n1. Simple Goal");
         System.Console.WriteLine("2. Eternal Goal");
         System.Console.WriteLine("3. Checklist Goal");
         System.Console.WriteLine("Witch goal type would you like to make? >    ");
         string choice = System.Console.ReadLine();
 
-        System.Console.Write("What is the name of your goal? >    ");
+        System.Console.Write("\nWhat is the name of your goal? >    ");
         string name = System.Console.ReadLine();
 
-        System.Console.Write("Give a discription >    ");
+        System.Console.Write("\nGive a discription >    ");
         string discription = System.Console.ReadLine();
 
-        System.Console.Write("Set the points for the goal >    ");
+        System.Console.Write("\nSet the points for the goal >    ");
         int value = Convert.ToInt32(System.Console.ReadLine());
 
             switch(choice) //Logic
@@ -82,9 +102,9 @@ class Program
                     break;
                 case "3":
                 //Check list goal
-                    System.Console.WriteLine("How many times do you need to do this, to accomplish the goal for bonus points? >    ");
+                    System.Console.WriteLine("\nHow many times do you need to do this, to accomplish the goal for bonus points? >    ");
                     int goalCount = Convert.ToInt32(System.Console.ReadLine());
-                    System.Console.WriteLine("Set bonus points when you've completed the entire goal >    ");
+                    System.Console.WriteLine("\nSet bonus points when you've completed the entire goal >    ");
                     int bonusPoint = Convert.ToInt32(System.Console.ReadLine());
                     ChecklistGoal checklistGoal = new ChecklistGoal(name, discription, value, goalCount, bonusPoint);
                     goals.Add(checklistGoal);
@@ -94,6 +114,7 @@ class Program
 
     static void ListGoal(List<Goal> goals)
     {
+        System.Console.WriteLine();//spacing
         foreach (Goal g in goals)
         {
             switch(TypeDescriptor.GetClassName(g)) //Gets object type
@@ -110,8 +131,10 @@ class Program
                     string checklistGoal = g.DisplayGoal();
                     System.Console.WriteLine($"{checklistGoal}");
                     break;
-            }
+            }            
         }
+        System.Console.WriteLine("Enter to return to menu");
+        System.Console.ReadLine();
     }
 
     static void SaveGoal(List<Goal> goals)
@@ -194,6 +217,7 @@ class Program
 
     static void RecordEvent(List<Goal> goals)
     {
+        System.Console.WriteLine();//spacing
         int counter = 1;
         foreach (Goal g in goals)
         {
@@ -201,7 +225,7 @@ class Program
             System.Console.WriteLine($"{counter}. {goalString}");
             counter++;
         }
-        System.Console.WriteLine("Witch Goal did you complete? >    ");
+        System.Console.WriteLine("\nWitch Goal did you complete? >    ");
         int choice = Convert.ToInt16(System.Console.ReadLine());
 
         Goal updateGoal = goals[choice-1];
