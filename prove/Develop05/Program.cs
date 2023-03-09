@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 
 class Program
 {
@@ -76,6 +77,8 @@ class Program
                     break;
                 case "2":
                 //eternal goal
+                    EternalGoal eternalGoal = new EternalGoal(name, discription, value);
+                    goals.Add(eternalGoal);
                     break;
                 case "3":
                 //Check list goal
@@ -85,10 +88,20 @@ class Program
 
     static void ListGoal(List<Goal> goals)
     {
+        System.Console.WriteLine("Checked | Name | Discreption | Points | Did | Goal");
         foreach (Goal g in goals)
         {
-            string goalString = g.DisplayGoal();
-            System.Console.WriteLine(goalString);
+            switch(TypeDescriptor.GetClassName(g))
+            {
+                case "SimpleGoal":
+                    string simpString = g.DisplayGoal();
+                    System.Console.WriteLine(simpString);
+                    break;
+                case "EternalGoal":
+                    string EternalString = g.DisplayGoal();
+                    System.Console.WriteLine($"{EternalString} | {g.GetCount()}");
+                    break;
+            }
         }
     }
 
@@ -163,11 +176,7 @@ class Program
         int points = 0;
         foreach (Goal g in goals)
         {
-            bool add = g.GetIsComplete();
-            if ( add == true)
-            {
-                points = points + g.GetPoints();
-            }
+            points = points + g.GetPoints();        
         }
         return points;
     }

@@ -1,9 +1,11 @@
 abstract class Goal
 {
-    private string _name;
-    private string _discription;
-    private int _value;
+    protected string _name;
+    protected string _discription;
+    protected int _value;
     private bool _isComplete = false;
+    protected string _complete = ("[ ]");
+
 
     public Goal(string name, string discription, int value)
     {
@@ -14,18 +16,22 @@ abstract class Goal
 
     public virtual string DisplayGoal()
     {
-        string complete = ("[ ]");
 
         if (_isComplete == true)
-            {complete = ("[X]");}
+            {_complete = ("[X]");}
 
-        string goalString = ($"{complete} | {_name} | {_discription} | {_value}");
+        string goalString = ($"{_complete} | {_name} | {_discription} | {_value}");
         return goalString;
     }
 
     public virtual int GetPoints()
     {
-        return _value;
+        bool add = GetIsComplete();
+            if ( add == true)
+            {
+                return _value;
+            }
+        return 0;
     }
 
     public bool GetIsComplete()
@@ -33,9 +39,13 @@ abstract class Goal
         return _isComplete;
     }
 
-    public void SetTrue()
+    public virtual void SetTrue()
     {
         _isComplete = true;
     }
     
+    public virtual string GetCount()
+    {
+        return "";
+    }
 }
