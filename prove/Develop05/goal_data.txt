@@ -1,3 +1,4 @@
-SimpleGoal |[X] |   asvbad   |   324   | 1
-SimpleGoal |[X] |   awgbfa   |   abtan   | 1221
-EternalGoal |[ ] | zbfn | gx | 500 | 2
+SimpleGoal |[X] | Name: asvbad | Discription: 324 | Value:1
+SimpleGoal |[X] | Name: awgbfa | Discription: abtan | Value:1221
+EternalGoal |[ ] | Name: Eternal GoalTest | Discription: ETest | Value: 200 | Completed:0
+ChecklistGoal |[X] | Name:checklistGoal | Discription:CheckMate | Value:300 | -----Completed:(3/3)
