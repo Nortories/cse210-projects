@@ -1,0 +1,4 @@
+Quiz game
+
+I would like to make a quiz game where the user/player will have the option of picking a topic and then being asked a x number of random questions based off the chosen topic and answer as many as possible within a given amount of time. They will then be given a score based off number of questions asked and correct answers minus incorrect answers. I will also add a leader bord that will save and load on startup.
+I would also like to have the game run outside of vs code, it will be programed in C# and then play as a executable.
